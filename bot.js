@@ -46,7 +46,7 @@ function hasRole(mem, role) {
   }
 var servers = {};
 //
-const prefix = "!";
+const prefix = "-";
 client.on('ready', () => {
     console.log('I am ready!');
 });
