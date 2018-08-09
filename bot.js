@@ -46,7 +46,7 @@ function hasRole(mem, role) {
   }
 var servers = {};
 //
-const prefix = "-";
+const prefix = process.env.BOT_prefix;
 client.on('ready', () => {
     console.log('I am ready!');
 });
