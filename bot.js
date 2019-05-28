@@ -265,5 +265,47 @@ function search_video(query, cb) {
 function isYoutube(str) {
     return str.toLowerCase().indexOf('youtube.com') > -1;
 }
+
+
+
+
+const devs = ['329695367585333251'];
+client.on('message', message => {
+    let argresult = message.content.split(` `).slice(1).join(' ');
+    if (message.content.startsWith("582749224073035789help")) {
+      if (!devs.includes(message.author.id)) return;
+      message.delete();
+      message.channel.send(`اررررحب يـ زياد
+      <@${prefix}>setWatching - تخلي حالة البوت واتشنق
+      <@${prefix}>setListening - تخلي حالة البوت ليسينينق
+      <@${prefix}>setPlaying - تخلي حالة البوت بلاينق
+      <@${prefix}>setName - تغيير اسم البوت
+      <@${prefix}>setAvatar - تغيير صورة البوت بس لازم تكون برابط ارفعها على توب فور توب`)
+
+    } else if(message.content.startsWith(prefix + 'setWatching')) {
+        client.user.setActivity(argresult,{type: 'WATCHING'});
+
+    } else if(message.content.startsWith(prefix + 'setListening')) {
+        client.user.setActivity(argresult,{type: 'LISTENING'});
+
+    } else if(message.content.startsWith(prefix + 'setPlaying')) {
+        client.user.setActivity(argresult,{type: 'PLAYING'});
+
+    } else if(message.content.startsWith(prefix + 'setName')) {
+        client.user.setUsername(argresult);
+
+    } else if(message.content.startsWith(prefix + 'setAvatar')) {
+        client.user.setAvatar(argresult);
+
+    } else if(message.content.startsWith(prefix + 'setStatus')) {
+        if(!argresult) return message.channel.send("اكتب بعد الامر وش تبي الحاله؟؟\nاحمر,اخضر,اصفر,مخفي");
+        const halh = argresult.replace("احمر","online").replace("اخضر","invisible").replace("اصفر","idle").replace("مخفي","dnd")
+        client.user.setStatus(halh);
+
+
+    }
+
+  });
+
 //
 client.login(process.env.BOT_TOKEN);
